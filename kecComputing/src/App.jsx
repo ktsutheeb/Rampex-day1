@@ -46,6 +46,7 @@ import Footer from "./Components/FunctionalComponents/Footer";
 import UseEffect from "./Components/FunctionalComponents/UseEffect";
 import UseRef from "./Components/FunctionalComponents/UseRef";
 import UseContext from "./Components/FunctionalComponents/UseContext";
+import UseMemo from "./Components/FunctionalComponents/UseMemo";
 
 function App() {
   return (
@@ -63,7 +64,7 @@ function App() {
             <Route path="/useeffect" element={<UseEffect />} />
             <Route path="/useref" element={<UseRef />} />
             <Route path="/usecontext" element={<UseContext />} />
-
+            <Route path="/usememo" element={<UseMemo />} />
           </Routes>
         </BrowserRouter>
         <Footer />

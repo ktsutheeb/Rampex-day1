@@ -65,6 +65,11 @@ const Navbar = () => {
               UseContext
             </Link>
           </li>
+          <li>
+            <Link to="/usememo" className="link">
+              UseMemo
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>
