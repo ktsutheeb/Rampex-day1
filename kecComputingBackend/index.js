@@ -30,13 +30,17 @@ mdb
 // });
 
 app.post("/signup", (req, res) => {
-  var { firstName, lastName, id } = req.body;//destructing
+  var { firstName, lastName, id } = req.body;
+  // //body in thunder cliend or postman
   try {
-    var newUser = new User({
-      firstName: firstName,
-      lastName: lastName,
-      id: id,
-    });
+    // var newUser = new User({
+    //   firstName: firstName,
+    //   lastName: lastName,
+    //   id: id,
+    // });
+    // destructing ^^^
+    var newUser = new User(req.body);
+    console.log(req.body.password);
     newUser.save();
     console.log("user added successfully");
     res.status(200).send("user added successfully"); //status 200 depolyed
@@ -44,16 +48,36 @@ app.post("/signup", (req, res) => {
     console.log(err);
   }
 });
-app.get("/getsignup",async (req, res) => { //without async and await the multiple record can't be displayed . real world ex if the guest comes to anna university and students have a semister(which cannot be postponed) , the guesh is the one should be waiting. 
+app.get("/getsignup", async (req, res) => {
+  //without async and await the multiple record can't be displayed . real world ex if the guest comes to anna university and students have a semister(which cannot be postponed) , the guesh is the one should be waiting.
   try {
-    var allSignUpRecords =await User.find()
-    res.json(allSignUpRecords)
+    var allSignUpRecords = await User.find();
+    res.json(allSignUpRecords);
+  } catch {
+    console.log("cannot able to read the records");
+    res.send(err);
   }
-  catch {
-    console.log("cannot able to read the records")
-    res.send(err)
+});
+
+app.post("/login", async (req, res) => {
+  var { id, password } = req.body;
+  try {
+    var existingUser = await User.findOne({ id: id }); //or not find , find shouldnot be used because // but //without await amd async , not waiting to give output , o/p fast in sync , so without await and async the output is not readable..
+    console.log(existingUser);
+
+    if (existingUser) {
+      if (existingUser.password != password) {
+        res.json({ message: "Invalid Credentials", isLoggedIn: false });
+      } else {
+        res.json({ message: "Login Successfull", isLoggedIn: true });
+      }
+    } else {
+      res.json({ message: "Login Fail ", isLoggedIn: false });
+    }
+  } catch {
+    console.log("catch");
   }
-})
+});
 
 app.listen(PORT, () => {
   console.log(`backend server start \n Url: http://localhost:${PORT}`);

@@ -5,6 +5,7 @@ var userSchema = mdb.Schema({
   firstName: String,
   lastName: String,
   id: Number,
+  password : String
 });
 
 
