@@ -1,11 +1,13 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "./AuthContext";
 
 const Login = (props) => {
   var [email, setEmail] = useState("");
   var [password, setPassword] = useState("");
   var navigate = useNavigate();
+  var { setIsAuthenticated } = useContext(AuthContext);
   var loginning = async (event) => {
     event.preventDefault();
     // async function func (event) =>{}
@@ -17,7 +19,9 @@ const Login = (props) => {
     console.log(req);
 
     if (req.data.isLoggedIn) {
-      navigate("/");
+      setIsAuthenticated(true)
+      navigate("/home");
+
     } else {
       window.alert(req.data.message);
     }

@@ -49,29 +49,36 @@ import UseContext from "./Components/FunctionalComponents/UseContext";
 import UseMemo from "./Components/FunctionalComponents/UseMemo";
 import Signup from "./Components/FunctionalComponents/signup";
 import Login from "./Components/FunctionalComponents/Login";
-
+import {
+  AuthProvider,
+  AuthContext,
+} from "./Components/FunctionalComponents/AuthContext";
 function App() {
+  var { isAuthenticated } = React.useContext(AuthContext);
   return (
     <>
       <div className="x">
-        <BrowserRouter>
-          <Navbar />
-          <Routes>
-            <Route
-              path="/"
-              element={<Home place="erode" jail1="kongu arts" jail2="ai" />}
-            />
-            <Route path="/gallery" element={<Gallary />} />
-            <Route path="/newpage" element={<NewPage />} />
-            <Route path="/useeffect" element={<UseEffect />} />
-            <Route path="/useref" element={<UseRef />} />
-            <Route path="/usecontext" element={<UseContext />} />
-            <Route path="/usememo" element={<UseMemo />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/login" element={<Login/>} />
-          </Routes>
-        </BrowserRouter>
-        <Footer />
+        <AuthProvider>
+          <BrowserRouter>
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<Signup />} />
+              <Route path="/login" element={<Login />} />
+              <Route
+                path="/home"
+                element={<Home place="erode" jail1="kongu arts" jail2="ai" />}
+              />
+              <Route path="/gallery" element={<Gallary />} />
+              <Route path="/newpage" element={<NewPage />} />
+              <Route path="/useeffect" element={<UseEffect />} />
+              <Route path="/useref" element={<UseRef />} />
+              <Route path="/usecontext" element={<UseContext />} />
+              <Route path="/usememo" element={<UseMemo />} />
+              <Route path="/login" element={<Login />} />
+            </Routes>
+          </BrowserRouter>
+          <Footer />
+        </AuthProvider>
 
         {/* <Home place="erode" jail1="kongu arts" jail2="ai" />
         <Gallary />

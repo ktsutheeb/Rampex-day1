@@ -3,18 +3,18 @@ var app = express();
 var path = require("path");
 var mdb = require("mongoose");
 var cors = require("cors");
-var env = require("dotenv")
+var env = require("dotenv");
 
 const User = require("./models/user"); // *******file name user //import user_schema from "./models/user";  >> app crash since b.e does'nt know import , it knows require
 
-env.config()
+env.config();
 app.use(cors());
 app.use(express.json()); //pradeepan putten destructing problem (sir wrriten)
 
 const PORT = 3001;
 mdb
   // .connect("mongodb://localhost:27017") //mongodb://localhost:27017/   some laptop localhost not working use 127.0.0.1(for localhost replace)
-  .connect(process.env.MONGO_URL)//with the atlas
+  .connect(process.env.MONGO_URL) //with the atlas
   .then(() => {
     console.log("MongoDB connection successful");
   })
@@ -47,9 +47,13 @@ app.post("/signup", (req, res) => {
     // destructing ^^^
     var newUser = new User(req.body);
     console.log(req.body.password);
-    newUser.save();
     console.log("user added successfully");
-    res.status(200).send("user added successfully"); //status 200 depolyed
+    if (newUser.save()) {
+      res.json({ message: "User added Successfully", issignup: true });
+    } else {
+      res.json({ message: "User Not added ", issignup: false });
+      //status 200 depolyed
+    }
   } catch (err) {
     console.log(err);
   }
