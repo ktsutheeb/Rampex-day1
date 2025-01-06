@@ -47,14 +47,11 @@ import UseEffect from "./Components/FunctionalComponents/UseEffect";
 import UseRef from "./Components/FunctionalComponents/UseRef";
 import UseContext from "./Components/FunctionalComponents/UseContext";
 import UseMemo from "./Components/FunctionalComponents/UseMemo";
-import Signup from "./Components/FunctionalComponents/signup";
+import Signup from "./Components/FunctionalComponents/Signup";
 import Login from "./Components/FunctionalComponents/Login";
-import {
-  AuthProvider,
-  AuthContext,
-} from "./Components/FunctionalComponents/AuthContext";
+import {AuthProvider} from "./Components/FunctionalComponents/AuthContext";
 function App() {
-  var { isAuthenticated } = React.useContext(AuthContext);
+
   return (
     <>
       <div className="x">
