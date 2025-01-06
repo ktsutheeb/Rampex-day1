@@ -70,6 +70,16 @@ const Navbar = () => {
               UseMemo
             </Link>
           </li>
+          <li>
+            <Link to="/signup" className="link">
+              Signup
+            </Link>
+          </li>
+          <li>
+            <Link to="/login" className="link">
+              Login
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>

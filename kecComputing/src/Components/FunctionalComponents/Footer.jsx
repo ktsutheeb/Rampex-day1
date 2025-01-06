@@ -5,9 +5,10 @@ const Footer = () => {
         <h3>Footer body</h3>
         <form>
             <div>
-                <input type="text" name="name" placeholder="Enter your name" required/>
+                <input type="text" name="name" placeholder="Enter your name" required /><br></br>
+                <input type="number" name="phoneNo" placeholder="Enter your Phone number" required />
             </div>
-            <button type="submit">Submit</button>
+            <button type="submit" >Submit</button>
         </form>
   </footer>);
 };
