@@ -4,7 +4,7 @@ var path = require("path");
 var mdb = require("mongoose");
 var cors = require("cors");
 var env = require("dotenv");
-
+//npm install express cors path dotenv mongoose
 const User = require("./models/user"); // *******file name user //import user_schema from "./models/user";  >> app crash since b.e does'nt know import , it knows require
 
 env.config();
