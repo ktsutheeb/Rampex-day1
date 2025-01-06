@@ -14,7 +14,7 @@ const Signup = (props) => {
     try {
       //without async and await it is running
     event.preventDefault();
-    var req = await axios.post("http://localhost:3001/signup", {
+    var req = await axios.post("https://rampex-c6o2.onrender.com/signup", {  //var req = await axios.post("http://localhost:3001/signup", {
       //not 5173- f.e , 3001-b.e
       firstName: firstName,
       lastName: lastName,
