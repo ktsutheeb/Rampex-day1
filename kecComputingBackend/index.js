@@ -11,7 +11,7 @@ env.config();
 app.use(cors());
 app.use(express.json()); //pradeepan putten destructing problem (sir wrriten)
 
-const PORT = process.env.PORT||3001;
+const PORT = process.env.PORT;
  //const PORT = 3001;
 mdb
   // .connect("mongodb://localhost:27017") //mongodb://localhost:27017/   some laptop localhost not working use 127.0.0.1(for localhost replace)
